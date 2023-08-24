@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-explore-container',
@@ -8,5 +9,12 @@ import { Component, Input } from '@angular/core';
 export class ExploreContainerComponent {
 
   @Input() name?: string;
+  info?: any;
+
+  constructor() {
+    App.getInfo().then((info) => {
+      this.info = info;
+    });
+  }
 
 }
